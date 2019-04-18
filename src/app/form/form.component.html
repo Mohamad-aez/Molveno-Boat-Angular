@@ -1,0 +1,58 @@
+<h1 style="color: red">Welcome to the admin page!</h1>
+Fields with a <b>*</b> are obligatory
+<hr />
+
+<form [formGroup]="form" (submit)="onFormSubmit()" style="padding-bottom: 20px">
+  <div class="form-group">
+    <label>Boat Type*</label><br />
+
+    <select formControlName="boatType">
+      <option *ngFor="let boattype of boatTypes" [ngValue]="boattype.id">{{
+        boattype.type
+      }}</option>
+    </select>
+  </div>
+  <!-- <div class="form-group">
+    <label>id*</label>
+    <input
+      placeholder="id"
+      class="form-control"
+      type="number"
+      formControlName="id"
+    />
+  </div> -->
+  <div class="form-group">
+    <label>Boat Number*</label>
+    <input
+      placeholder="Boat Number"
+      class="form-control"
+      type="text"
+      formControlName="boatNumber"
+    />
+  </div>
+  <div class="form-group">
+    <label>Number of Seats*</label>
+    <input
+      placeholder="Number of Seats"
+      class="form-control"
+      type="text"
+      formControlName="numberOfSeats"
+    />
+  </div>
+  <div class="form-group">
+    <label>Boat Availability*</label>
+    <select formControlName="boatAvailability">
+      <option>true</option>
+      <option>false</option>
+    </select>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    style="background-color: red"
+    [disabled]="form?.invalid"
+  >
+    Add Boat
+  </button>
+</form>
