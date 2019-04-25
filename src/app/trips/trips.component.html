@@ -1,0 +1,44 @@
+<!-- <tr (click)="onSlect(trip)"> -->
+
+<!-- </tr> -->
+
+<table
+  class="table table-hover myColor "
+  style=" background-color: rgba(43, 43, 43, 0.377) ; color: white; "
+>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Status</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Trip Period Per Hrs</th>
+      <th>Cost</th>
+      <th>Number Of Persons</th>
+      <th>Boat Type</th>
+      <th>Boat Number</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr
+      *ngFor="let trip of allTrips"
+      (click)="onSlect(trip)"
+      style="color: white;"
+    >
+      <th scope="row">{{ trip?.id }}</th>
+      <td>{{ trip?.status }}</td>
+      <td>{{ trip?.startTime }}</td>
+      <td>{{ trip?.endTime }}</td>
+      <td>{{ trip?.reservationDuration }}</td>
+      <td>{{ trip?.cost }}</td>
+      <td>{{ trip?.numberOfPersons }}</td>
+      <td>{{ trip?.boatType }}</td>
+      <td>
+        <p *ngFor="let boat of trip.boats">{{ boat.boatNumber }}</p>
+      </td>
+      <!-- <td>{{ (trip?.boats)[0].boatNumber + ' ' }}</td> -->
+    </tr>
+    <!-- <app-trips *ngFor="let trip of allTrips" [trip]="trip"></app-trips> -->
+  </tbody>
+</table>

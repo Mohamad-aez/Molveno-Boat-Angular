@@ -1,0 +1,100 @@
+<div style="margin: 20px; color: #CCF4FE; ">
+  <form
+    [formGroup]="form"
+    (submit)="onFormSubmit()"
+    style="padding-bottom: 20px"
+  >
+    <div class="form-group">
+      <label>Boat Type*</label><br />
+      <select formControlName="boatType">
+        <option *ngFor="let boattype of boatTypes" [ngValue]="boattype.type">{{
+          boattype.type
+        }}</option>
+      </select>
+    </div>
+    <!-- <div class="form-group">
+    <label>Start Time*</label>
+    <input
+      placeholder="Start Time"
+      class="form-control"
+      type="text"
+      formControlName="startTime"
+    />
+  </div> -->
+    <div class="form-group">
+      <label>Number of Persons*</label>
+      <input
+        placeholder="Number of Persons"
+        class="form-control"
+        type="number"
+        formControlName="numberOfPersons"
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      style="background-color: #5398C1 ; color: black"
+    >
+      Check Boats Availability
+    </button>
+    <br />
+  </form>
+  <div id="guestContainer" *ngIf="boatsForTrip.length !== 0">
+    <form
+      [formGroup]="form"
+      (submit)="supmitTrip()"
+      style="padding-bottom: 20px"
+    >
+      <p>There are Available boats for you , boat Numbers Are :</p>
+      <p *ngFor="let boat of boatsForTrip">
+        {{ boat.boatNumber + ' . ' }}
+        <br />
+      </p>
+      <div class="form-group">
+        <label>Name*</label>
+        <input
+          placeholder="Name"
+          class="form-control"
+          type="text"
+          formControlName="name"
+        />
+      </div>
+      <div class="form-group">
+        <label>Phone*</label>
+        <input
+          placeholder="Phone"
+          class="form-control"
+          type="text"
+          formControlName="phone"
+        />
+      </div>
+      <div class="form-group">
+        <label>Id Type*</label>
+        <input
+          placeholder="Id Type"
+          class="form-control"
+          type="text"
+          formControlName="idType"
+        />
+      </div>
+      <div class="form-group">
+        <label>Id Number*</label>
+        <input
+          placeholder="Id Number"
+          class="form-control"
+          type="text"
+          formControlName="idNumber"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        style="background-color: #5398C1 ; color: black"
+        [disabled]="form?.invalid"
+      >
+        Start Trip
+      </button>
+    </form>
+  </div>
+</div>

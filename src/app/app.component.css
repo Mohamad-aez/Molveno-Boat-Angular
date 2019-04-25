@@ -1,0 +1,13 @@
+html,
+body {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+}
+
+body {
+  background-image: url(https://drifttravel.com/wp-content/uploads/2016/10/boating-peer-to-peer.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}

@@ -1,3 +1,34 @@
-<p>
-  boats works!
-</p>
+<!-- <tr (click)="onSlect(boat)">
+  <td scope="row">{{ boat?.id }}</td>
+  <td>{{ boat?.boatNumber }}</td>
+  <td>{{ boat?.boatType.type }}</td>
+  <td>{{ boat?.numberOfSeats }}</td>
+  <td>{{ boat?.boatAvailability }}</td>
+  <td>{{ boat?.countOfUsed }}</td>
+</tr> -->
+
+<table
+  class="table table-hover myColor "
+  style=" background-color: rgba(43, 43, 43, 0.377) ; color: white; "
+>
+  <thead>
+    <tr>
+      <td>Id#</td>
+      <td>Boat Number</td>
+      <td>Boat Type</td>
+      <td>Number Of Seats</td>
+      <td>Boat Availability</td>
+      <td>Count Of Use</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let boat of allBoats" style="color: white;">
+      <th scope="row">{{ boat?.id }}</th>
+      <td>{{ boat?.boatNumber }}</td>
+      <td>{{ boat?.boatType.type }}</td>
+      <td>{{ boat?.numberOfSeats }}</td>
+      <td>{{ boat?.boatAvailability }}</td>
+      <td>{{ boat?.countOfUsed }}</td>
+    </tr>
+  </tbody>
+</table>

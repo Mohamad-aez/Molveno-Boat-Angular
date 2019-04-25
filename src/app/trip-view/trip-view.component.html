@@ -1,0 +1,31 @@
+<table class="table table-hover table-dark">
+  <thead class="tdead-dark">
+    <tr>
+      <td>Id#</td>
+      <td>Status</td>
+      <td>Start Time</td>
+      <td>End Time</td>
+      <td>Trip Period</td>
+      <td>Cost</td>
+      <td>Number Of Persons</td>
+      <td>Boat Type</td>
+      <td>Guest Name</td>
+      <!-- <td>Guest Name</td> -->
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th scope="row">{{ trip?.id }}</th>
+      <td>{{ trip?.status }}</td>
+      <td>{{ trip?.startTime }}</td>
+      <td>{{ trip?.endTime }}</td>
+      <td>{{ trip?.reservationDuration }}</td>
+      <td>{{ trip?.cost }}</td>
+      <td>{{ trip?.numberOfPersons }}</td>
+      <td>{{ trip?.boatType }}</td>
+      <td>{{ trip?.guest.name }}</td>
+      <!-- <td>{{ trip?.Boats.forEach(boat.boatNumber) }}</td> -->
+    </tr>
+  </tbody>
+</table>

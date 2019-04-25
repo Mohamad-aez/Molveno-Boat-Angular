@@ -1,0 +1,268 @@
+<div style="color: lightyellow">
+  <nav
+    class="navbar navbar-expand-lg navbar-dark "
+    style="color: #CCF4FE; background-color: rgba(255, 255, 255, 0.247); "
+  >
+    <!-- <a class="navbar-brand text-danger" [routerLink]="['/']">Molveno</a> -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            href="javascript:void(0)"
+            (click)="this.boatTypeAddBoatType()"
+            >Add Boat-Type <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            href="javascript:void(0)"
+            (click)="this.boatTypeEditBoatType()"
+            >Edit Boat-Type</a
+          >
+        </li>
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            href="javascript:void(0)"
+            (click)="this.boatTypeDeleteBoatType()"
+            >Delete Boat-Type</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="col" *ngIf="this.addBoatType" style="padding: 20px;">
+    <h2>Add Boat-Type</h2>
+    <div class="container">
+      <form [formGroup]="form" (submit)="onFormSubmit()">
+        <div class="form-group">
+          <label>Boat Type Name*</label>
+          <input
+            placeholder="Boat Type"
+            class="form-control"
+            type="text"
+            formControlName="type"
+          />
+        </div>
+        <div class="form-group">
+          <label>Rental Price*</label>
+          <input
+            placeholder="Rental Price"
+            class="form-control"
+            type="number"
+            formControlName="rentalPrice"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          style="background-color: #5398C1 ; color: black"
+          [disabled]="form?.invalid"
+        >
+          Add Boat Type
+        </button>
+
+        <br />
+        <br />
+        <div class="row" *ngIf="showMs" style="text-align: center">
+          <div class="col-xs-12" style="display: inline-block">
+            <p class="alert alert-success">
+              <strong>Your modification has been applied successfully!</strong>
+            </p>
+
+            <button class="btn btn-primary btn-sm" (click)="showMessage()">
+              close
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col" *ngIf="this.editBoatType" style="padding: 20px;">
+    <h2>Edit Boat-Type</h2>
+    <div class="container">
+      <form [formGroup]="form2" (submit)="onFormSubmit1()">
+        <div class="form-group">
+          <label>Select Boat-Type*</label>
+          <select formControlName="id" class="form-control">
+            <option
+              *ngFor="let boatType of boatTypes"
+              [ngValue]="boatType.id"
+              >{{ boatType.type }}</option
+            >
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Boat-Type New-Name*</label>
+          <input
+            placeholder="Boat-Type New-Name"
+            class="form-control"
+            type="text"
+            formControlName="type"
+          />
+        </div>
+        <div class="form-group">
+          <label>Rental Price*</label>
+          <input
+            placeholder="Rental Price"
+            class="form-control"
+            type="number"
+            formControlName="rentalPrice"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="form2?.invalid"
+        >
+          Submit
+        </button>
+        <br />
+        <br />
+        <div class="row" *ngIf="showMs1" style="text-align: center">
+          <div class="col-xs-12" style="display: inline-block">
+            <p class="alert alert-success">
+              <strong>Your modification has been applied successfully!</strong>
+            </p>
+
+            <button class="btn btn-primary btn-sm" (click)="showMessage1()">
+              close
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col" *ngIf="this.deleteBoatType" style="padding: 20px;">
+    <h2>Delete Boat-Type</h2>
+    <div class="container">
+      <form [formGroup]="form3" (submit)="onFormSubmit2()">
+        <div class="form-group">
+          <label>Select Boat-Type*</label>
+          <select formControlName="id" class="form-control">
+            <option *ngFor="let boaType of boatTypes" [ngValue]="boaType.id">{{
+              boaType.type
+            }}</option>
+          </select>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="form3?.invalid"
+        >
+          Submit
+        </button>
+        <br />
+        <br />
+        <div class="row" *ngIf="showMs2" style="text-align: center">
+          <div class="col-xs-12" style="display:inline-block ">
+            <p class="alert alert-success">
+              <strong>Your modification has been applied successfully!</strong>
+            </p>
+
+            <button class="btn btn-primary btn-sm" (click)="showMessage2()">
+              close
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <h1 style="color: red">Welcome to the boaType page!</h1>
+Fields with a <b>*</b> are obligatory
+<hr />
+
+<form [formGroup]="form" (submit)="onFormSubmit()" style="padding-bottom: 20px">
+  <div class="form-group">
+    <label>Boat Type Name*</label>
+    <input
+      placeholder="Boat Type"
+      class="form-control"
+      type="text"
+      formControlName="type"
+    />
+  </div>
+  <div class="form-group">
+    <label>Rental Price*</label>
+    <input
+      placeholder="Rental Price"
+      class="form-control"
+      type="number"
+      formControlName="rentalPrice"
+    />
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    style="background-color: red"
+    [disabled]="form?.invalid"
+  >
+    Add Boat Type
+  </button>
+</form>
+
+<div id="edite-boatType">
+  <form
+    [formGroup]="form"
+    (submit)="editeBoatType()"
+    style="padding-bottom: 20px"
+  >
+    <div class="form-group">
+      <label>Boat Type*</label><br />
+      <select formControlName="id">
+        <option
+          *ngFor="let editedBoatType of editedBoatTypes"
+          [ngValue]="editedBoatType.id"
+          >{{ editedBoatType.type }}</option
+        >
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Boat Type New Name*</label>
+      <input
+        placeholder="Boat Type"
+        class="form-control"
+        type="text"
+        formControlName="editedType"
+      />
+    </div>
+    <div class="form-group">
+      <label>New Rental Price*</label>
+      <input
+        placeholder="Rental Price"
+        class="form-control"
+        type="number"
+        formControlName="editedRentalPrice"
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      style="background-color: red"
+      [disabled]="form?.invalid"
+    >
+      Edit Boat Type
+    </button>
+  </form>
+</div> -->

@@ -1,18 +1,19 @@
-<h1 style="color: red">Welcome to the admin page!</h1>
-Fields with a <b>*</b> are obligatory
-<hr />
+<div style="margin: 20px; color: #CCF4FE; ">
+  <form
+    [formGroup]="form"
+    (submit)="onFormSubmit()"
+    style="padding-bottom: 20px"
+  >
+    <div class="form-group">
+      <label>Boat Type*</label><br />
 
-<form [formGroup]="form" (submit)="onFormSubmit()" style="padding-bottom: 20px">
-  <div class="form-group">
-    <label>Boat Type*</label><br />
-
-    <select formControlName="boatType">
-      <option *ngFor="let boattype of boatTypes" [ngValue]="boattype.id">{{
-        boattype.type
-      }}</option>
-    </select>
-  </div>
-  <!-- <div class="form-group">
+      <select formControlName="boatType">
+        <option *ngFor="let boattype of boatTypes" [ngValue]="boattype.id">{{
+          boattype.type
+        }}</option>
+      </select>
+    </div>
+    <!-- <div class="form-group">
     <label>id*</label>
     <input
       placeholder="id"
@@ -21,38 +22,39 @@ Fields with a <b>*</b> are obligatory
       formControlName="id"
     />
   </div> -->
-  <div class="form-group">
-    <label>Boat Number*</label>
-    <input
-      placeholder="Boat Number"
-      class="form-control"
-      type="text"
-      formControlName="boatNumber"
-    />
-  </div>
-  <div class="form-group">
-    <label>Number of Seats*</label>
-    <input
-      placeholder="Number of Seats"
-      class="form-control"
-      type="text"
-      formControlName="numberOfSeats"
-    />
-  </div>
-  <div class="form-group">
-    <label>Boat Availability*</label>
-    <select formControlName="boatAvailability">
-      <option>true</option>
-      <option>false</option>
-    </select>
-  </div>
+    <div class="form-group">
+      <label>Boat Number*</label>
+      <input
+        placeholder="Boat Number"
+        class="form-control"
+        type="text"
+        formControlName="boatNumber"
+      />
+    </div>
+    <div class="form-group">
+      <label>Number of Seats*</label>
+      <input
+        placeholder="Number of Seats"
+        class="form-control"
+        type="text"
+        formControlName="numberOfSeats"
+      />
+    </div>
+    <div class="form-group">
+      <label>Boat Useability*</label>
+      <select formControlName="boatAvailability">
+        <option>true</option>
+        <option>false</option>
+      </select>
+    </div>
 
-  <button
-    type="submit"
-    class="btn btn-primary"
-    style="background-color: red"
-    [disabled]="form?.invalid"
-  >
-    Add Boat
-  </button>
-</form>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      style="background-color: rgb(211, 225, 233) ; color: black"
+      [disabled]="form?.invalid"
+    >
+      Add Boat
+    </button>
+  </form>
+</div>

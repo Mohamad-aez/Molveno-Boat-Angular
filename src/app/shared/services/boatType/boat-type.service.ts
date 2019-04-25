@@ -18,14 +18,14 @@ export class BoatTypeService {
   public getAllBoatTypes(): Observable<BoatType[]> {
     return this.http.get<BoatType[]>(this.endpiont);
   }
-  public addBoatType(BoatTypeCreate: BoatTypeCreate): Observable<void> {
-    return this.http.post<void>(this.endpiont1, BoatTypeCreate);
+  public addBoatType(boatTypeCreate: BoatTypeCreate): Observable<void> {
+    return this.http.post<void>(this.endpiont1, boatTypeCreate);
   }
-  // public deleteCat(category: CategoryEdit): Observable<void> {
-  //   return this.http.post<void>(this.endpiont3, category);
-  // }
+  public deleteBoatType(deletedBoatType: BoatType): Observable<void> {
+    return this.http.post<void>(this.endpiont3, deletedBoatType);
+  }
 
-  // public editCategory(category: CategoryEdit): Observable<void> {
-  //   return this.http.post<void>(this.endpiont2, category);
-  // }
+  public editBoatType(editedBoatType: BoatType): Observable<void> {
+    return this.http.post<void>(this.endpiont2, editedBoatType);
+  }
 }

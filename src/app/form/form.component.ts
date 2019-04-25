@@ -4,9 +4,7 @@ import { BoatType } from '../shared/models/boatType.model';
 import { BoatForm } from './boat.form';
 import { BoatService } from '../shared/services/boatService/boat.service';
 import { BoatTypeService } from '../shared/services/boatType/boat-type.service';
-// import { BoatTypeForm } from './boatType.form';
-import { BoatTypeCreate } from '../shared/models/boatType-create';
-// import { BoatTypeForm } from './boattype.form';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -24,7 +22,8 @@ export class FormComponent implements OnInit {
 
   constructor(
     private boatService: BoatService,
-    private boatTypeService: BoatTypeService
+    private boatTypeService: BoatTypeService,
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -39,6 +38,7 @@ export class FormComponent implements OnInit {
 
     this.boatService.addBoat(boat).subscribe(() => {
       this.boatService.getAllBoats().subscribe(boats => (this.boats = boats));
+      this.router.navigate(['/', 'boats-overview']);
     });
   }
 }

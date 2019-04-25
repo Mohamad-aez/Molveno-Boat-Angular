@@ -20,7 +20,7 @@ export class BoatForm extends FormGroup {
       boatType: {
         id: this.controls.boatType.value,
         rentalPrice: 2,
-        type: 'Samer'
+        type: ''
       },
 
       numberOfSeats: this.controls.numberOfSeats.value,
