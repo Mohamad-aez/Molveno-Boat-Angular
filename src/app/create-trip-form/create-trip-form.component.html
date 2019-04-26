@@ -1,4 +1,35 @@
 <div style="color: white ; margin: 20px">
+  <h1>Delete Trip Reservation</h1>
+  <br />
+
+  <form
+    [formGroup]="form2"
+    (submit)="onFormSubmit2()"
+    style="padding-bottom: 20px"
+  >
+    <div class="form-group">
+      <label>Boat Number*</label><br />
+
+      <select formControlName="id">
+        <option *ngFor="let trip of allTrips" [ngValue]="trip.id"
+          >{{ trip.id }}
+        </option>
+      </select>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      style="background-color: rgb(211, 225, 233) ; color: black"
+      [disabled]="form2?.invalid"
+    >
+      Delete Trip Reservation
+    </button>
+  </form>
+
+  <br />
+  <br />
+
   <h1 style="color:white">Make Trip Reservation</h1>
   <br />
   Fields with a <b>*</b> are obligatory
@@ -35,28 +66,6 @@
         formControlName="endTime"
       />
     </div>
-    <!-- <div class="form-group">
-      <label>Start Time</label>
-      <input
-        placeholder="Start time"
-        class="form-control"
-        type="datetime-local"
-        formControlName="startTime"
-        min="{{ displayDate }}"
-        step="600"
-      />
-    </div>
-    <div class="form-group">
-      <label>End time</label>
-      <input
-        placeholder="End Time"
-        class="form-control"
-        type="datetime-local"
-        formControlName="endTime"
-        min="{{ displayDate }}"
-        step="600"
-      />
-    </div> -->
 
     <div class="form-group">
       <label>Number of Persons*</label>
@@ -134,5 +143,9 @@
         Create Trip Reservation
       </button>
     </form>
+
+    <br />
+    <br />
+    <br />
   </div>
 </div>

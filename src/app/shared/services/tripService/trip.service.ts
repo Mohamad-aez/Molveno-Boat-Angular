@@ -23,6 +23,9 @@ export class TripService {
   private readonly endpiont7 = 'http://localhost:8080/edit-cost-ended-trip';
   private readonly endpiont8 =
     'http://localhost:8080/check-boats-availability-for-trip2';
+  private readonly endpiont9 =
+    'http://localhost:8080/get-allTrips-contain-unuseableBoat';
+  private readonly endpiont10 = 'http://localhost:8080/delete-trip';
 
   constructor(private readonly http: HttpClient) {}
 
@@ -35,6 +38,10 @@ export class TripService {
 
   public getAllEndedTrips(): Observable<Trip[]> {
     return this.http.get<Trip[]>(this.endpiont6);
+  }
+
+  public getAllTripsContainUnuseableBoat(boatId: number): Observable<Trip[]> {
+    return this.http.get<Trip[]>(this.endpiont9 + '/' + boatId);
   }
 
   public getOneTrip(id: number): Observable<Trip> {
@@ -69,5 +76,9 @@ export class TripService {
     startTrip: StartTrip
   ): Observable<BoatDeatail[]> {
     return this.http.post<BoatDeatail[]>(this.endpiont8, startTrip);
+  }
+
+  public deleteTripReservation(deletedTripReservation: Trip): Observable<void> {
+    return this.http.post<void>(this.endpiont10, deletedTripReservation);
   }
 }

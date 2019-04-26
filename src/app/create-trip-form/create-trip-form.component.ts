@@ -7,6 +7,8 @@ import { GuestService } from '../shared/services/guest/guest.service';
 import { TripService } from '../shared/services/tripService/trip.service';
 import { BoatDeatail } from '../shared/models/boatDetail.model';
 import { Router } from '@angular/router';
+import { Trip } from '../shared/models/trip.model';
+import { DeleteTripReservationForm } from './deleteTripReservation.form';
 
 @Component({
   selector: 'app-create-trip-form',
@@ -18,11 +20,13 @@ export class CreateTripFormComponent implements OnInit {
   public boatType: BoatType;
   public createTrip: CreateTrip;
   public trips: CreateTrip[] = [];
+  public allTrips: Trip[] = [];
   public boatsForTrip: BoatDeatail[] = [];
   public isAvailable: boolean;
   // public displayDate = new Date().toISOString().slice(0, 16);
 
   public form: CreateTripForm = new CreateTripForm();
+  public form2: DeleteTripReservationForm = new DeleteTripReservationForm();
 
   constructor(
     private boatTypeService: BoatTypeService,
@@ -34,6 +38,9 @@ export class CreateTripFormComponent implements OnInit {
     this.boatTypeService
       .getAllBoatTypes()
       .subscribe(boatTypes => (this.boatTypes = boatTypes));
+    this.tripService
+      .getAllTrips()
+      .subscribe(alltrips => (this.allTrips = alltrips));
   }
 
   public checkAvailability() {
@@ -99,5 +106,16 @@ export class CreateTripFormComponent implements OnInit {
       // console.log(this.isAvailable);
       this.router.navigate(['/', 'trips-overview']);
     });
+  }
+
+  public onFormSubmit2() {
+    const deletedTripReservation: Trip = this.form2.getModel();
+    this.tripService
+      .deleteTripReservation(deletedTripReservation)
+      .subscribe(() => {
+        this.tripService
+          .getAllTrips()
+          .subscribe(alltrips => (this.allTrips = alltrips));
+      });
   }
 }

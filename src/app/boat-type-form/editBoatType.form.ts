@@ -6,7 +6,12 @@ export class EditBoatTypeForm extends FormGroup {
     super({
       id: new FormControl('', [Validators.required]),
       type: new FormControl('', [Validators.required]),
-      rentalPrice: new FormControl('', [Validators.required])
+      rentalPrice: new FormControl('', [
+        Validators.required,
+        Validators.required,
+        Validators.min(1),
+        Validators.max(1000)
+      ])
     });
   }
 

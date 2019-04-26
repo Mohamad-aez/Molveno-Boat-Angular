@@ -1,4 +1,7 @@
 <div style="margin: 20px; color: #CCF4FE; ">
+  <h1>Adding Boat</h1>
+  <br />
+
   <form
     [formGroup]="form"
     (submit)="onFormSubmit()"
@@ -13,15 +16,6 @@
         }}</option>
       </select>
     </div>
-    <!-- <div class="form-group">
-    <label>id*</label>
-    <input
-      placeholder="id"
-      class="form-control"
-      type="number"
-      formControlName="id"
-    />
-  </div> -->
     <div class="form-group">
       <label>Boat Number*</label>
       <input
@@ -55,6 +49,56 @@
       [disabled]="form?.invalid"
     >
       Add Boat
+    </button>
+  </form>
+  <br />
+  <br />
+  <br />
+
+  <h1>Editing Boat Useability</h1>
+  <br />
+
+  <form
+    [formGroup]="form2"
+    (submit)="onFormSubmit2()"
+    style="padding-bottom: 20px"
+  >
+    <div class="form-group">
+      <label>Boat Number*</label><br />
+
+      <select formControlName="id">
+        <option *ngFor="let boat of allBoats" [ngValue]="boat.id"
+          >{{
+            boat.boatNumber + '   usable status  :  ' + boat.boatAvailability
+          }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Boat Useability*</label>
+      <select formControlName="boatAvailability">
+        <option>true</option>
+        <option>false</option>
+      </select>
+    </div>
+
+    <!-- <button
+      type="submit"
+      class="btn btn-primary"
+      style="background-color: rgb(211, 225, 233) ; color: black"
+      [disabled]="form2?.invalid"
+    >
+      check Boat Inuse
+    </button> -->
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      style="background-color: rgb(211, 225, 233) ; color: black"
+      [disabled]="form2?.invalid"
+    >
+      Edit Boat
     </button>
   </form>
 </div>
